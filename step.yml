@@ -1,0 +1,149 @@
+title: Huawei AppGallery Connect Reports
+summary:  Gets the different Reports from AppGallery Connect for a specific published app.
+description: |-
+  Gets the next reports from AppGallery Connect:
+  - Download and Installation Report
+  - In-app Payment Report
+  - Paid Download Report
+  - Installation Failure Data Report
+
+  This step is based on [AppGallery Connect Reports](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/agcapi-appdownloadexport)
+website: https://github.com/ferPrieto/steps-app-gallery-reports
+source_code_url: https://github.com/ferPrieto/steps-app-gallery-reports
+support_url: https://github.com/ferPrieto/steps-app-gallery-reports/issues
+published_at: 2021-03-01T19:15:16.844179195Z
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+
+project_type_tags:
+  - android
+  - xamarin
+  - react-native
+  - flutter 
+
+type_tags:
+  - deploy
+
+is_requires_admin_user: true
+is_always_run: true
+is_skippable: false
+run_if: ""
+
+deps:
+  brew:
+  - name: jq
+  apt_get:
+  - name: jq
+
+
+toolkit:
+  bash:
+    entry_file: step.sh
+
+
+inputs:
+  - file_path: $BITRISE_APK_PATH
+    opts:
+      category: Config
+      title: File path
+      description: Path to generated APK/AAB file to deploy.
+      is_expand: true
+      is_required: true
+
+  - huawei_filename: app_release_${BITRISE_BUILD_NUMBER}.apk
+    opts:
+      category: Config
+      title: File name
+      description: Unique name of APK/AAB file upload.
+      is_expand: true
+      is_required: true
+
+  - huawei_app_id:
+    opts:
+      category: Config
+      title: App ID
+      description: App ID can be found in the `App information` section in App Gallery Connect.
+      is_expand: true
+      is_required: true
+
+  - huawei_client_id:
+    opts:
+      category: Config
+      title: Client ID
+      description: Client ID generated in `AppGallery Connect -> Users and permissions -> API key -> Connect API -> API client`
+      is_expand: true
+      is_required: true
+
+  - huawei_client_secret:
+    opts:
+      category: Config
+      description: Key Secret generated in `AppGallery Connect -> Users and permissions -> API key -> Connect API -> API client`
+      title: Key
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+
+  - release_type: "Entire Network"
+    opts:
+      category: Config
+      title: Release Type
+      description: App release mode (Entire network | By phase)[Release Type](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/agcapi-app-submit-with-file_v2)
+      is_expand: true
+      is_required: true 
+      value_options:
+        - "Entire Network"
+        - "By Phase"
+
+  - submit_for_review: "true" 
+    opts:
+      category: Config
+      title: Submit for Review
+      description: By default is marked as For Review ("true"). Setting to "false" will submit the relase as a Draft.
+      is_expand: true
+      is_required: false 
+      value_options:
+        - "true"
+        - "false"
+
+  - phase_release_start_time:
+    opts:
+      category: Phase
+      title: Phase Release Start Time
+      description: Start time of the validity period of the release by phase. The value is UTC time in the following format yyyy-MM-ddTHH:mm:ssZZ. Example:2021-02-17T13:20:15
+      is_expand: true
+      is_required: false 
+
+  - phase_release_end_time: 
+    opts:
+      category: Phase
+      title: Phase Release End Time
+      description: End time of the validity period of the release by phase. The value is UTC time in the following format yyyy-MM-ddTHH:mm:ssZZ. Example:2021-02-20T07:05:15
+      is_expand: true
+      is_required: false 
+
+  - phase_release_percentage: 
+    opts:
+      category: Phase
+      title: Phase Release Percentage
+      description: Percentage of target users of release by phase.Enter an integer or decimal greater than 0 and less than 100. The value can contain up to two decimal places. For a version released by phase, the release percentage must increase gradually for different phases.
+      is_expand: true
+      is_required: false 
+
+  - phase_release_description: 
+    opts:
+      category: Phase
+      title: Phase Description
+      description: Remarks of the phased release, such as release features, with up to 500 characters. The description is not displayed to users or Huawei reviewers. It is displayed only on the version information page for your reference.
+      is_expand: true
+      is_required: false 
+
+  - show_debug_logs: "no"
+    opts:
+      category: Debug
+      title: "Show debug logs?"
+      description: |
+        If debug=yes the step will print debug infos
+      value_options:
+        - "no"
+        - "yes"
