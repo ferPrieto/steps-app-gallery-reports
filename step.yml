@@ -43,25 +43,9 @@ toolkit:
 
 
 inputs:
-  - file_path: $BITRISE_APK_PATH
-    opts:
-      category: Config
-      title: File path
-      description: Path to generated APK/AAB file to deploy.
-      is_expand: true
-      is_required: true
-
-  - huawei_filename: app_release_${BITRISE_BUILD_NUMBER}.apk
-    opts:
-      category: Config
-      title: File name
-      description: Unique name of APK/AAB file upload.
-      is_expand: true
-      is_required: true
-
   - huawei_app_id:
     opts:
-      category: Config
+      category: Required Config
       title: App ID
       description: App ID can be found in the `App information` section in App Gallery Connect.
       is_expand: true
@@ -69,74 +53,46 @@ inputs:
 
   - huawei_client_id:
     opts:
-      category: Config
+      category: Required Config
       title: Client ID
       description: Client ID generated in `AppGallery Connect -> Users and permissions -> API key -> Connect API -> API client`
       is_expand: true
       is_required: true
 
-  - huawei_client_secret:
+  - download_installation_language: "en-US"
     opts:
-      category: Config
-      description: Key Secret generated in `AppGallery Connect -> Users and permissions -> API key -> Connect API -> API client`
-      title: Key
+      category: Download and Installation
+      description: Query language. The report title is displayed in different languages. Only simplified Chinese (zh-CN), English (en-US), and Russian (ru-RU) are supported.
+      title: Language
       is_expand: true
-      is_required: true
-      is_sensitive: true
+      is_required: false
 
-  - release_type: "Entire Network"
+  - download_installation_startTime:
     opts:
-      category: Config
-      title: Release Type
-      description: App release mode (Entire network | By phase)[Release Type](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-References/agcapi-app-submit-with-file_v2)
+      category: Download and Installation
+      title: Start Time
+      description: Query start time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
       is_expand: true
-      is_required: true 
-      value_options:
-        - "Entire Network"
-        - "By Phase"
+      is_required: false  
 
-  - submit_for_review: "true" 
+  - download_installation_endTime:
     opts:
-      category: Config
-      title: Submit for Review
-      description: By default is marked as For Review ("true"). Setting to "false" will submit the relase as a Draft.
+      category: Download and Installation
+      title: End Time
+      description: Query end time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+
+  - exportType: "CSV" 
+    opts:
+      category: Download and Installation
+      title: Export Type
+      description: Format of an exported file. The options are as follows: CSV, EXCEL. The default value is CSV.
       is_expand: true
       is_required: false 
       value_options:
-        - "true"
-        - "false"
-
-  - phase_release_start_time:
-    opts:
-      category: Phase
-      title: Phase Release Start Time
-      description: Start time of the validity period of the release by phase. The value is UTC time in the following format yyyy-MM-ddTHH:mm:ssZZ. Example:2021-02-17T13:20:15
-      is_expand: true
-      is_required: false 
-
-  - phase_release_end_time: 
-    opts:
-      category: Phase
-      title: Phase Release End Time
-      description: End time of the validity period of the release by phase. The value is UTC time in the following format yyyy-MM-ddTHH:mm:ssZZ. Example:2021-02-20T07:05:15
-      is_expand: true
-      is_required: false 
-
-  - phase_release_percentage: 
-    opts:
-      category: Phase
-      title: Phase Release Percentage
-      description: Percentage of target users of release by phase.Enter an integer or decimal greater than 0 and less than 100. The value can contain up to two decimal places. For a version released by phase, the release percentage must increase gradually for different phases.
-      is_expand: true
-      is_required: false 
-
-  - phase_release_description: 
-    opts:
-      category: Phase
-      title: Phase Description
-      description: Remarks of the phased release, such as release features, with up to 500 characters. The description is not displayed to users or Huawei reviewers. It is displayed only on the version information page for your reference.
-      is_expand: true
-      is_required: false 
+        - "CSV"
+        - "EXCEL"
 
   - show_debug_logs: "no"
     opts:

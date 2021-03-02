@@ -2,23 +2,18 @@ format_version: 1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
-  envs:
-  - FILE_PATH: ${FILE_PATH}
-  - FILE_NAME: ${FILE_NAME}
+  envs: 
   - APP_ID: ${APP_ID}
   - CLIENT_ID: ${CLIENT_ID}
-  - CLIENT_SECRET: ${CLIENT_SECRET}
-  - SHOW_DEBUG_LOGS: ${SHOW_DEBUG_LOGS}
-  - RELEASE_TYPE: ${RELEASE_TYPE}
-  - PHASE_RELEASE_START_TIME: ${PHASE_RELEASE_START_TIME}
-  - PHASE_RELEASE_END_TIME: ${PHASE_RELEASE_END_TIME}
-  - PHASE_RELEASE_PERCENTAGE: ${PHASE_RELEASE_PERCENTAGE}
-  - PHASE_RELEASE_DESCRIPTION: ${PHASE_RELEASE_DESCRIPTION}
-  - SUBMIT_FOR_REVIEW: ${SUBMIT_FOR_REVIEW}
+  - DOWNLOAD_INSTALLATION_LANGUAGE: ${DOWNLOAD_INSTALLATION_LANGUAGE}
+  - DOWNLOAD_INSTALLATION_START_TIME: ${DOWNLOAD_INSTALLATION_START_TIME}
+  - DOWNLOAD_INSTALLATION_END_TIME: ${DOWNLOAD_INSTALLATION_END_TIME}
+  - DOWNLOAD_INSTALLATION_EXPORT_TYPE: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE} 
+
   # If you want to share this step into a StepLib
-  - BITRISE_STEP_ID: steps-app-gallery-deploy
-  - BITRISE_STEP_VERSION: "1.5.3"
-  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/ferPrieto/steps-app-gallery-deploy.git
+  - BITRISE_STEP_ID: steps-app-gallery-reports
+  - BITRISE_STEP_VERSION: "0.9.0"
+  - BITRISE_STEP_GIT_CLONE_URL: https://github.com/ferPrieto/steps-app-gallery-reports
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
 workflows:
@@ -44,19 +39,13 @@ workflows:
           file if you would not specify another value.
         run_if: true
         inputs:
-        - file_path: ${FILE_PATH}
-        - huawei_filename: ${FILE_NAME}
         - huawei_app_id: ${APP_ID}
         - huawei_client_id: ${CLIENT_ID}
-        - huawei_client_secret: ${CLIENT_SECRET}
+        - download_installation_language: ${DOWNLOAD_INSTALLATION_LANGUAGE}
+        - download_installation_start_time: ${DOWNLOAD_INSTALLATION_START_TIME}
+        - download_installation_end_time: ${DOWNLOAD_INSTALLATION_END_TIME}
+        - download_installation_export_type: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE}
         - show_debug_logs: ${SHOW_DEBUG_LOGS}
-        - release_type: ${RELEASE_TYPE}
-        - phase_release_start_time: ${PHASE_RELEASE_START_TIME}
-        - phase_release_end_time: ${PHASE_RELEASE_END_TIME}
-        - phase_release_percentage: ${PHASE_RELEASE_PERCENTAGE}
-        - phase_release_description: ${PHASE_RELEASE_DESCRIPTION}
-        - submit_for_review: ${SUBMIT_FOR_REVIEW}
-
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
   audit-this-step:
