@@ -5,10 +5,12 @@ app:
   envs: 
   - APP_ID: ${APP_ID}
   - CLIENT_ID: ${CLIENT_ID}
+  - CLIENT_SECRET: ${CLIENT_SECRET}
   - DOWNLOAD_INSTALLATION_LANGUAGE: ${DOWNLOAD_INSTALLATION_LANGUAGE}
   - DOWNLOAD_INSTALLATION_START_TIME: ${DOWNLOAD_INSTALLATION_START_TIME}
   - DOWNLOAD_INSTALLATION_END_TIME: ${DOWNLOAD_INSTALLATION_END_TIME}
   - DOWNLOAD_INSTALLATION_EXPORT_TYPE: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE} 
+  - DOWNLOAD_INSTALLATION_REPORT_LINK: ${DOWNLOAD_INSTALLATION_REPORT_LINK} 
 
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: steps-app-gallery-reports
@@ -41,11 +43,14 @@ workflows:
         inputs:
         - huawei_app_id: ${APP_ID}
         - huawei_client_id: ${CLIENT_ID}
+        - huawei_client_secret: ${CLIENT_SECRET}
         - download_installation_language: ${DOWNLOAD_INSTALLATION_LANGUAGE}
         - download_installation_start_time: ${DOWNLOAD_INSTALLATION_START_TIME}
         - download_installation_end_time: ${DOWNLOAD_INSTALLATION_END_TIME}
         - download_installation_export_type: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE}
         - show_debug_logs: ${SHOW_DEBUG_LOGS}
+        outputs:
+        - download_installation_report_link: ${DOWNLOAD_INSTALLATION_REPORT_LINK}
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
   audit-this-step:

@@ -1,8 +1,6 @@
 # Huawei AppGallery Reports Step
 
-Get your app reports from **Huawei AppGallery**.
-
-:robot:This is the code base of the **Verified** Bitrise Step:robot:
+Get your app reports from **Huawei AppGallery**. 
 
 
 ## Before using the step

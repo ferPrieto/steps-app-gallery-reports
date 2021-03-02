@@ -41,6 +41,12 @@ toolkit:
   bash:
     entry_file: step.sh
 
+outputs:
+  - DOWNLOAD_INSTALLATION_REPORT_LINK: 
+    opts:
+      title: Report Link
+      is_dont_change_value: false 
+      category: Download and Installation
 
 inputs:
   - huawei_app_id:
@@ -59,6 +65,15 @@ inputs:
       is_expand: true
       is_required: true
 
+  - huawei_client_secret:
+    opts:
+      category: Required Config
+      description: Key Secret generated in `AppGallery Connect -> Users and permissions -> API key -> Connect API -> API client`
+      title: Key
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+
   - download_installation_language: "en-US"
     opts:
       category: Download and Installation
@@ -67,7 +82,7 @@ inputs:
       is_expand: true
       is_required: false
 
-  - download_installation_startTime:
+  - download_installation_start_time:
     opts:
       category: Download and Installation
       title: Start Time
@@ -75,7 +90,7 @@ inputs:
       is_expand: true
       is_required: false  
 
-  - download_installation_endTime:
+  - download_installation_end_time:
     opts:
       category: Download and Installation
       title: End Time
@@ -83,11 +98,11 @@ inputs:
       is_expand: true
       is_required: false  
 
-  - exportType: "CSV" 
+  - download_installation_export_type: "CSV" 
     opts:
       category: Download and Installation
       title: Export Type
-      description: Format of an exported file. The options are as follows: CSV, EXCEL. The default value is CSV.
+      description: Format of an exported file. The options are as follows CSV, EXCEL.
       is_expand: true
       is_required: false 
       value_options:
