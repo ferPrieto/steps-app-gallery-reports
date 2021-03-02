@@ -44,9 +44,27 @@ toolkit:
 outputs:
   - DOWNLOAD_INSTALLATION_REPORT_LINK: 
     opts:
-      title: Report Link
+      title: Download and Installation Report Link
       is_dont_change_value: false 
       category: Download and Installation
+
+  - IN_APP_PAYMENT_REPORT_REPORT_LINK: 
+    opts:
+      title: In-App Payment Report Link
+      is_dont_change_value: false 
+      category: In-App Payment
+
+  - PAID_DOWNLOAD_REPORT_LINK: 
+    opts:
+      title: Paid Download Report Link
+      is_dont_change_value: false 
+      category: Paid Download
+
+  - INSTALLATION_FAILURE_DATA_REPORT_LINK: 
+    opts:
+      title: Installation Failure Data Report Link
+      is_dont_change_value: false 
+      category: Installation Failure Data
 
 inputs:
   - huawei_app_id:
@@ -108,6 +126,135 @@ inputs:
       value_options:
         - "CSV"
         - "EXCEL"
+  
+  - in_app_payment_language: "en-US"
+    opts:
+      category: In-App Payment
+      description: Query language. The report title is displayed in different languages. Only simplified Chinese (zh-CN), English (en-US), and Russian (ru-RU) are supported.
+      title: Language
+      is_expand: true
+      is_required: false
+
+  - in_app_payment_start_time:
+    opts:
+      category: In-App Payment
+      title: Start Time
+      description: Query start time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+
+  - in_app_payment_end_time:
+    opts:
+      category: In-App Payment
+      title: End Time
+      description: Query end time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+
+  - in_app_payment_export_type: "CSV" 
+    opts:
+      category: In-App Payment
+      title: Export Type
+      description: Format of an exported file. The options are as follows CSV, EXCEL.
+      is_expand: true
+      is_required: false 
+      value_options:
+        - "CSV"
+        - "EXCEL"
+
+  - in_app_payment_currency: "EUR" 
+    opts:
+      category: In-App Payment
+      title: Currency
+      description: Currency code. Only CNY, EUR, USD, GBP, and JPY are supported.
+      is_expand: true
+      is_required: false 
+      value_options:
+        - "CNY"
+        - "EUR"
+        - "USD"
+        - "GBP"
+        - "JPY"
+
+  - paid_download_domain: "Europe"
+    opts:
+      category: Paid Download
+      description: Domain name related to the region of the app payment.
+      title: Domain
+      is_expand: true
+      is_required: false
+       value_options:
+        - "China"
+        - "Europe"
+        - "Asia Pacific"
+        - "Russia" 
+
+  - paid_download_language: "en-US"
+    opts:
+      category: Paid Download
+      description: Query language. The report title is displayed in different languages. Only simplified Chinese (zh-CN), English (en-US), and Russian (ru-RU) are supported.
+      title: Language
+      is_expand: true
+      is_required: false
+
+  - paid_download_start_time:
+    opts:
+      category: Paid Download
+      title: Start Time
+      description: Query start time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+
+  - paid_download_end_time:
+    opts:
+      category: Paid Download
+      title: End Time
+      description: Query end time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+  
+  - paid_download_country_id: "GB"
+    opts:
+      category: Paid Download
+      title: Country Id
+      description: This parameter is mandatory in Paid Download Reports (by default GB). Allowed country IDs: https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-reference-countrycode
+      is_expand: true
+      is_required: false 
+
+  - paid_download_export_type: "CSV" 
+    opts:
+      category: Paid Download
+      title: Export Type
+      description: Format of an exported file. The options are as follows CSV, EXCEL.
+      is_expand: true
+      is_required: false 
+      value_options:
+        - "CSV"
+        - "EXCEL"  
+
+  - installation_failure_data_language: "en-US"
+    opts:
+      category: Installation Failure Data
+      description: Query language. The report title is displayed in different languages. Only simplified Chinese (zh-CN), English (en-US), and Russian (ru-RU) are supported.
+      title: Language
+      is_expand: true
+      is_required: false
+
+  - installation_failure_data_start_time:
+    opts:
+      category: Installation Failure Data
+      title: Start Time
+      description: Query start time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
+
+  - installation_failure_data_end_time:
+    opts:
+      category: Installation Failure Data
+      title: End Time
+      description: Query end time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
+      is_expand: true
+      is_required: false  
 
   - show_debug_logs: "no"
     opts:

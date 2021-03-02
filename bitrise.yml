@@ -11,6 +11,21 @@ app:
   - DOWNLOAD_INSTALLATION_END_TIME: ${DOWNLOAD_INSTALLATION_END_TIME}
   - DOWNLOAD_INSTALLATION_EXPORT_TYPE: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE} 
   - DOWNLOAD_INSTALLATION_REPORT_LINK: ${DOWNLOAD_INSTALLATION_REPORT_LINK} 
+  - IN_APP_PAYMENT_LANGUAGE: ${IN_APP_PAYMENT_LANGUAGE}
+  - IN_APP_PAYMENT_START_TIME: ${IN_APP_PAYMENT_START_TIME}
+  - IN_APP_PAYMENT_END_TIME: ${IN_APP_PAYMENT_END_TIME}
+  - IN_APP_PAYMENT_EXPORT_TYPE: ${IN_APP_PAYMENT_EXPORT_TYPE} 
+  - IN_APP_PAYMENT_REPORT_LINK: ${IN_APP_PAYMENT_REPORT_LINK} 
+  - IN_APP_PAYMENT_REPORT_CURRENCY: ${IN_APP_PAYMENT_REPORT_CURRENCY} 
+  - PAID_DOWNLOAD_DOMAIN: ${PAID_DOWNLOAD_DOMAIN}
+  - PAID_DOWNLOAD_LANGUAGE: ${PAID_DOWNLOAD_LANGUAGE}
+  - PAID_DOWNLOAD_START_TIME: ${PAID_DOWNLOAD_START_TIME}
+  - PAID_DOWNLOAD_END_TIME: ${PAID_DOWNLOAD_END_TIME}
+  - PAID_DOWNLOAD_COUNTRY_ID: ${PAID_DOWNLOAD_COUNTRY_ID} 
+  - PAID_DOWNLOAD_EXPORT_TYPE: ${PAID_DOWNLOAD_EXPORT_TYPE} 
+  - INSTALLATION_FAILURE_DATA_LANGUAGE: ${INSTALLATION_FAILURE_DATA_LANGUAGE}
+  - INSTALLATION_FAILURE_DATA_START_TIME: ${INSTALLATION_FAILURE_DATA_START_TIME}
+  - INSTALLATION_FAILURE_DATA_END_TIME: ${INSTALLATION_FAILURE_DATA_END_TIME} 
 
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: steps-app-gallery-reports
@@ -48,6 +63,20 @@ workflows:
         - download_installation_start_time: ${DOWNLOAD_INSTALLATION_START_TIME}
         - download_installation_end_time: ${DOWNLOAD_INSTALLATION_END_TIME}
         - download_installation_export_type: ${DOWNLOAD_INSTALLATION_EXPORT_TYPE}
+        - in_app_payment_language: ${IN_APP_PAYMENT_LANGUAGE}
+        - in_app_payment_start_time: ${IN_APP_PAYMENT_START_TIME}
+        - in_app_payment_end_time: ${IN_APP_PAYMENT_END_TIME}
+        - in_app_payment_export_type: ${IN_APP_PAYMENT_EXPORT_TYPE}
+        - in_app_payment_currency: ${IN_APP_PAYMENT_CURRENCY}
+        - paid_download_domain: ${PAID_DOWNLOAD_DOMAIN}
+        - paid_download_language: ${PAID_DOWNLOAD_LANGUAGE}
+        - paid_download_start_time: ${PAID_DOWNLOAD_START_TIME}
+        - paid_download_end_time: ${PAID_DOWNLOAD_END_TIME}
+        - paid_download_country_id: ${PAID_DOWNLOAD_COUNTRY_ID} 
+        - paid_download_export_type: ${PAID_DOWNLOAD_EXPORT_TYPE}
+        - installation_failure_data_language: ${INSTALLATION_FAILURE_DATA_LANGUAGE}
+        - installation_failure_data_start_time: ${INSTALLATION_FAILURE_DATA_START_TIME}
+        - installation_failure_data_end_time: ${INSTALLATION_FAILURE_DATA_END_TIME} 
         - show_debug_logs: ${SHOW_DEBUG_LOGS}
         outputs:
         - download_installation_report_link: ${DOWNLOAD_INSTALLATION_REPORT_LINK}
