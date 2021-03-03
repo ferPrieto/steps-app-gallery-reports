@@ -131,26 +131,30 @@ function getDomainFromSelection()
 }
 
 function getReportsBySelectedParameters()
-{ 
+{
+  if [ ! -z "${download_installation_language}" ] ;then
+  
+        getDownloadAndInstallationReport
+  fi
 
+  if [ ! -z "${in_app_payment_language}" ]
+  then
+        getInAppPaymentReport
+  fi
 
+  if [ ! -z "${paid_download_language}" ]
+  then
+        getPaidDownloadReport
+  fi
+
+  if [ ! -z "${installation_failure_data_language}" ]
+  then
+        getInstallationFailureDataReport
+  fi
 }
 
 getToken  
-
-if [ -z "$download_installation_language" ]
-then
-      printf "\$download_installation_language is NULL"
-else
-      echo "\$download_installation_language is NOT NULL"
-fi
-
-#getDownloadAndInstallationReport 
-
-#getInAppPaymentReport
-
-getPaidDownloadReport
-
-#getInstallationFailureDataReport
+ 
+getReportsBySelectedParameters 
 
 exit 0

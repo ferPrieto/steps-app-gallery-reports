@@ -1,6 +1,21 @@
+![banner](art/banner.png)
 # Huawei AppGallery Reports Step
 
 Get your app reports from **Huawei AppGallery**. 
+
+
+## Latest added features
+
+The next reports are already available: 
+*  `Download and Installation Report`
+*  `In-app Payment Report`
+*  `Paid Download Report`
+*  `Installation Failure Data Report`  
+
+
+## Upcoming features
+
+* Reports Options - Choose between filter by different conditions (Country Id, Order Id, Order Status)
 
 
 ## Before using the step
