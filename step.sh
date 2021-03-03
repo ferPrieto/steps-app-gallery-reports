@@ -56,6 +56,14 @@ function getDownloadAndInstallationReport()
   printf "\nGetting Download&Installation Report - DONE\n"
 }
 
+function setOutputParameter()
+{
+   # Not tested yet
+   REPORT_LINK=`jq -r '.fileURL' $1` 
+   envman add --key "$2" --value "$REPORT_LINK"
+   printf "Log URL obtained (\$2=${REPORT_LINK})"
+}
+
 function getInAppPaymentReport()
 {
   ACCESS_TOKEN=`jq -r '.access_token' token.json` 
@@ -122,7 +130,20 @@ function getDomainFromSelection()
     echo $DOMAIN
 }
 
+function getReportsBySelectedParameters()
+{ 
+
+
+}
+
 getToken  
+
+if [ -z "$download_installation_language" ]
+then
+      printf "\$download_installation_language is NULL"
+else
+      echo "\$download_installation_language is NOT NULL"
+fi
 
 #getDownloadAndInstallationReport 
 
