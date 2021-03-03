@@ -183,7 +183,7 @@ inputs:
       title: Domain
       is_expand: true
       is_required: false
-       value_options:
+      value_options:
         - "China"
         - "Europe"
         - "Asia Pacific"
@@ -212,12 +212,12 @@ inputs:
       description: Query end time in UTC time. The format is YYYYMMDD. The interval between startTime and EndTime cannot exceed 180 days.
       is_expand: true
       is_required: false  
-  
-  - paid_download_country_id: "GB"
+
+  - paid_download_country_id:
     opts:
       category: Paid Download
       title: Country Id
-      description: This parameter is mandatory in Paid Download Reports (by default GB). Allowed country IDs: https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-reference-countrycode
+      description: This parameter is mandatory in Paid Download Reports (by default GB). Available country IDs https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-reference-countrycode
       is_expand: true
       is_required: false 
 
