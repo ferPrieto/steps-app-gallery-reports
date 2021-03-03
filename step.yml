@@ -217,7 +217,7 @@ inputs:
     opts:
       category: Paid Download
       title: Country Id
-      description: This parameter is mandatory in Paid Download Reports (by default GB). Available country IDs https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-reference-countrycode
+      description: This parameter is mandatory in Paid Download Reports. Available country IDs https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agcapi-reference-countrycode
       is_expand: true
       is_required: false 
 

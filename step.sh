@@ -44,7 +44,7 @@ function getDownloadAndInstallationReport()
   ACCESS_TOKEN=`jq -r '.access_token' token.json` 
 
   printf "\nGetting Download&Installation Report\n"
-  
+
   curl --silent -X GET \
   'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/appDownloadExport/'"${huawei_app_id}"'?language='"${download_installation_language}"'&startTime='"${download_installation_start_time}"'&endTime='"${download_installation_end_time}"'&exportType='"${download_installation_export_type}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
@@ -81,7 +81,7 @@ function getPaidDownloadReport()
   printf "\nGetting Paid Download Report\n"
 
   curl --silent -X GET \
-  'https://"${DOMAIN}"/api/report/distribution-operation-quality/v1/orderDetailExport/'"${huawei_app_id}"'?language='"${paid_download_language}"'&startTime='"${paid_download_start_time}"'&endTime='"${paid_download_end_time}"'&exportType='"${paid_download_export_type}"'&filterCondition='"countryId"'&filterConditionValue='"${paid_download_country_id}" \
+  'https://'"${DOMAIN}"'/api/report/distribution-operation-quality/v1/orderDetailExport/'"${huawei_app_id}"'?language='"${paid_download_language}"'&startTime='"${paid_download_start_time}"'&endTime='"${paid_download_end_time}"'&exportType='"${paid_download_export_type}"'&filterCondition='"countryId"'&filterConditionValue='"${paid_download_country_id}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > PaidDownloadReport.json
   REPORT_LINK=`jq -r '.fileURL' PaidDownloadReport.json` 
@@ -126,9 +126,9 @@ getToken
 
 #getDownloadAndInstallationReport 
 
-getInAppPaymentReport
+#getInAppPaymentReport
 
-#getPaidDownloadReport
+getPaidDownloadReport
 
 #getInstallationFailureDataReport
 
