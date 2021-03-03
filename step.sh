@@ -81,7 +81,7 @@ function getPaidDownloadReport()
   printf "\nGetting Paid Download Report\n"
 
   curl --silent -X GET \
-  'https://'"${DOMAIN}"'/api/report/distribution-operation-quality/v1/orderDetailExport/'"${huawei_app_id}"'?language='"${paid_download_language}"'&startTime='"${paid_download_start_time}"'&endTime='"${paid_download_end_time}"'&exportType='"${paid_download_export_type}"'&filterCondition='"countryId"'&filterConditionValue='"${paid_download_country_id}" \
+  'https://'"${DOMAIN}"'/api/report/distribution-operation-quality/v1/orderDetailExport/'"${huawei_app_id}"'?language='"${paid_download_language}"'&startTime='"${paid_download_start_time}"'&endTime='"${paid_download_end_time}"'&filterCondition='"countryId"'&filterConditionValue='"${paid_download_country_id}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > PaidDownloadReport.json
   REPORT_LINK=`jq -r '.fileURL' PaidDownloadReport.json` 
@@ -98,7 +98,7 @@ function getInstallationFailureDataReport()
   printf "\nGetting Installation Failure Data Report\n"
 
   curl --silent -X GET \
-  'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/appDownloadFailExport/'"${huawei_app_id}"'?language='"${installation_failure_data_language}"'&startTime='"${installation_failure_data_start_time}"'&endTime='"${installation_failure_data_end_time}" \
+  'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/appDownloadFailExport/'"${huawei_app_id}"'?language='"${installation_failure_data_language}"'&startTime='"${installation_failure_data_start_time}"'&endTime='"${installation_failure_data_end_time}"'&groupBy=deviceName' \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > InstallationFailureDataReport.json
   REPORT_LINK=`jq -r '.fileURL' InstallationFailureDataReport.json` 

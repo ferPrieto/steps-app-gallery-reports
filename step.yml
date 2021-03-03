@@ -221,17 +221,6 @@ inputs:
       is_expand: true
       is_required: false 
 
-  - paid_download_export_type: "CSV" 
-    opts:
-      category: Paid Download
-      title: Export Type
-      description: Format of an exported file. The options are as follows CSV, EXCEL.
-      is_expand: true
-      is_required: false 
-      value_options:
-        - "CSV"
-        - "EXCEL"  
-
   - installation_failure_data_language: "en-US"
     opts:
       category: Installation Failure Data
