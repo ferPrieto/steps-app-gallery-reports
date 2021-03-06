@@ -49,18 +49,16 @@ function getDownloadAndInstallationReport()
   'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/appDownloadExport/'"${huawei_app_id}"'?language='"${download_installation_language}"'&startTime='"${download_installation_start_time}"'&endTime='"${download_installation_end_time}"'&exportType='"${download_installation_export_type}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > DownloadAndInstallationReport.json
-  REPORT_LINK=`jq -r '.fileURL' DownloadAndInstallationReport.json` 
-  envman add --key "DOWNLOAD_INSTALLATION_REPORT_LINK" --value "$REPORT_LINK"
-  printf "Log URL obtained (\${DOWNLOAD_INSTALLATION_REPORT_LINK}=${REPORT_LINK})"
+
+  setOutputParameter "DownloadAndInstallationReport.json" "DOWNLOAD_INSTALLATION_REPORT_LINK" 
 
   printf "\nGetting Download&Installation Report - DONE\n"
 }
 
 function setOutputParameter()
 {
-   # Not tested yet
    REPORT_LINK=`jq -r '.fileURL' $1` 
-   envman add --key "$2" --value "$REPORT_LINK"
+   envman add --key "$2" --value "$REPORT_LINK" 
    printf "Log URL obtained (\$2=${REPORT_LINK})"
 }
 
@@ -74,9 +72,8 @@ function getInAppPaymentReport()
   'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/IAPExport/'"${huawei_app_id}"'?language='"${in_app_payment_language}"'&startTime='"${in_app_payment_start_time}"'&endTime='"${in_app_payment_end_time}"'&exportType='"${in_app_payment_export_type}"'&currency='"${in_app_payment_currency}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > InAppPaymentReport.json
-  REPORT_LINK=`jq -r '.fileURL' InAppPaymentReport.json` 
-  envman add --key "IN_APP_PAYMENT_REPORT_REPORT_LINK" --value "$REPORT_LINK"
-  printf "Log URL obtained (\${IN_APP_PAYMENT_REPORT_REPORT_LINK}=${REPORT_LINK})"
+
+  setOutputParameter "InAppPaymentReport.json" "IN_APP_PAYMENT_REPORT_REPORT_LINK" 
 
   printf "\nGetting In-App Payment Report - DONE\n"
 }
@@ -92,9 +89,8 @@ function getPaidDownloadReport()
   'https://'"${DOMAIN}"'/api/report/distribution-operation-quality/v1/orderDetailExport/'"${huawei_app_id}"'?language='"${paid_download_language}"'&startTime='"${paid_download_start_time}"'&endTime='"${paid_download_end_time}"'&filterCondition='"countryId"'&filterConditionValue='"${paid_download_country_id}" \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > PaidDownloadReport.json
-  REPORT_LINK=`jq -r '.fileURL' PaidDownloadReport.json` 
-  envman add --key "PAID_DOWNLOAD_REPORT_LINK" --value "$REPORT_LINK"
-  printf "Log URL obtained (\${PAID_DOWNLOAD_REPORT_LINK}=${REPORT_LINK})"
+
+  setOutputParameter "PaidDownloadReport.json" "PAID_DOWNLOAD_REPORT_LINK" 
 
   printf "\nGetting Paid Download Report - DONE\n"
 }
@@ -109,9 +105,8 @@ function getInstallationFailureDataReport()
   'https://connect-api.cloud.huawei.com/api/report/distribution-operation-quality/v1/appDownloadFailExport/'"${huawei_app_id}"'?language='"${installation_failure_data_language}"'&startTime='"${installation_failure_data_start_time}"'&endTime='"${installation_failure_data_end_time}"'&groupBy=deviceName' \
   -H 'Authorization: Bearer '"${ACCESS_TOKEN}"'' \
   -H 'client_id: '"${huawei_client_id}"'' > InstallationFailureDataReport.json
-  REPORT_LINK=`jq -r '.fileURL' InstallationFailureDataReport.json` 
-  envman add --key "INSTALLATION_FAILURE_DATA_REPORT_LINK" --value "$REPORT_LINK"
-  printf "Log URL obtained (\${INSTALLATION_FAILURE_DATA_REPORT_LINK}=${REPORT_LINK})"
+
+  setOutputParameter "InstallationFailureDataReport.json" "INSTALLATION_FAILURE_DATA_REPORT_LINK" 
 
   printf "\nGetting Installation Failure Data Report - DONE\n"
 }
