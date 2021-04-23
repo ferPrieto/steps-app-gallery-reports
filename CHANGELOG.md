@@ -2,5 +2,5 @@
 
 ## 0.9.0
 
-- Beta Release XX March 2021
+- Beta Release 06 March 2021
 
